@@ -11,6 +11,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 // Register services for dependency injection.
 // Scoped = one instance per HTTP request, matching the DbContext's lifetime.
 builder.Services.AddScoped<IEventService, EventService>();
+builder.Services.AddScoped<IRegistrationService, RegistrationService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
