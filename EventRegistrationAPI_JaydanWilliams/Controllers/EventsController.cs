@@ -40,5 +40,19 @@ namespace EventRegistrationAPI_JaydanWilliams.Controllers
 
             return Ok(eventDto); // 200
         }
+
+        // POST: api/events
+        /// <summary>
+        /// Creates a new event. Invalid input is rejected automatically with 400
+        /// by [ApiController] using the validation attributes on CreateEventDto.
+        /// </summary>
+        [HttpPost]
+        public async Task<ActionResult<EventDto>> CreateEvent(CreateEventDto dto)
+        {
+            var createdEvent = await _eventService.CreateEventAsync(dto);
+
+            // 201 Created, with a Location header pointing to GET api/events/{id}
+            return CreatedAtAction(nameof(GetEvent), new { id = createdEvent.EventId }, createdEvent);
+        }
     }
 }

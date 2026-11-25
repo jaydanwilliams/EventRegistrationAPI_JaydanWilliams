@@ -10,5 +10,6 @@ namespace EventRegistrationAPI_JaydanWilliams.Services
     {
         Task<List<EventDto>> GetAllEventsAsync();
         Task<EventDto?> GetEventByIdAsync(int id);
+        Task<EventDto> CreateEventAsync(CreateEventDto dto);
     }
 }
